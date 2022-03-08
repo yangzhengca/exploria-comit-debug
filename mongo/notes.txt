@@ -1,0 +1,82 @@
+db.superheroes.insertOne({ "name": "SPIDER-MAN", "image": "spiderman.jpg" })
+
+
+properties{
+    name,
+    brief,
+    description,
+    image,
+    amenities
+}
+var propertiesSchema = new Schema({
+  name : {
+      type: String,
+      required: true,
+  }  
+  movieCount: {
+    type: Number,
+    min: [0, "Too few movies"],
+    max: 12,
+    required: [true, "Why no movies?"],
+  },
+  brand: {
+    type: String,
+    enum: ["Marvel", "DC"],
+  },
+});
+
+
+
+
+
+db.properties.insertMany([{ "name": "Cute Caswell Hill Suite","brief": "This bright basement suite, in a charming 1920s character home, is the perfect accommodation for someone looking to stay close to Riversdale and downtown Saskatoon.", "description":"This bright basement suite, in a charming 1920s character home, is the perfect accommodation for someone looking to stay close to Riversdale and downtown Saskatoon.", "image": "1.jpg", "amenities":"Kitchen,Wifi,Free parking on premises,TV,Washer,Dryer,Central air conditioning,Bathtub," },{ "name": "Bright, Spacious Basement Suite","brief": "Spacious and bright basement suite in a quiet area with mature trees. Only a short walk to grocery stores, Tim Hortons, Starbucks and gas station. Close to bus links to the University of Saskatchewan, Broadway and Downtown.", "description":"Spacious and bright basement suite in a quiet area with mature trees. Only a short walk to grocery stores, Tim Hortons, Starbucks and gas station. Close to bus links to the University of Saskatchewan, Broadway and Downtown.", "image": "2.jpg", "amenities":"Bathtub,Hair dryer,Shampoo,Hot water,Washer,Dryer,Bed linens,Iron,Air conditioning,Smoke alarm,Wifi,Kitchen,Refrigerator,Cooking basics,Freezer,Coffee maker,Dining table" },
+{ "name": "Brighton: Stylish 2-BR","brief": "The space invites guests to relax while they visit the beautiful city of Saskatoon.This open concept kitchen and living room has a welcoming atmosphere that braces for your relaxation.", "description":"The space invites guests to relax while they visit the beautiful city of Saskatoon.This open concept kitchen and living room has a welcoming atmosphere that braces for your relaxation.We developed the space for both guests and ourselves to find solace in the city.Turn the light on the brick wall, sit, relax, watch Netflix, or have a glass of wine.Whether your stay is a result of business or pleasure,we welcome and look forward to your visit!", "image": "3.jpg", "amenities":"Bathtub,Hair dryer,Shampoo,Hot water,Washer,Dryer,Bed linens,Iron,Air conditioning,Smoke alarm,Wifi,Kitchen,Refrigerator,Cooking basics,Freezer,Coffee maker,Dining table" }]);
+
+
+
+db.properties.insertMany([
+  { "name": "Cute Caswell Hill Suite","brief": "This bright basement suite, in a charming 1920s character home, is the perfect accommodation for someone looking to stay close to Riversdale and downtown Saskatoon.", "description":"This bright basement suite, in a charming 1920s character home, is the perfect accommodation for someone looking to stay close to Riversdale and downtown Saskatoon.
+
+The suite has a separate entrance with its own deck and includes a dishwasher, microwave, toaster, coffee maker, oven, fridge, and washer/dryer. Easy, free street parking available. The full size bed is made with quality linens and pillows. The suite is fully equipped with extra linens and cleaning supplies for longer stays.", "image": "1.jpg", "amenities":"Kitchen,Wifi,Free parking on premises,TV,Washer,Dryer,Central air conditioning,Bathtub," },
+{ "name": "Bright, Spacious Basement Suite","brief": "Spacious and bright basement suite in a quiet area with mature trees. Only a short walk to grocery stores, Tim Hortons, Starbucks and gas station. Close to bus links to the University of Saskatchewan, Broadway and Downtown.", "description":"Spacious and bright basement suite in a quiet area with mature trees. Only a short walk to grocery stores, Tim Hortons, Starbucks and gas station. Close to bus links to the University of Saskatchewan, Broadway and Downtown.
+
+Well-equipped kitchen including fridge/freezer, oven, microwave, Nespresso coffee maker, drip coffee maker, toaster & kettle. Spacious and relaxing open-plan living space with cosy sofa, cable TV and Wifi.
+
+Queen size bedroom for two. New bathroom with bath and shower over.", "image": "2.jpg", "amenities":"Bathtub,Hair dryer,Shampoo,Hot water,Washer,Dryer,Bed linens,Iron,Air conditioning,Smoke alarm,Wifi,Kitchen,Refrigerator,Cooking basics,Freezer,Coffee maker,Dining table" },
+{ "name": "Brighton: Stylish 2-BR","brief": "The space invites guests to relax while they visit the beautiful city of Saskatoon.This open concept kitchen and living room has a welcoming atmosphere that braces for your relaxation.", "description":"The space invites guests to relax while they visit the beautiful city of Saskatoon.This open concept kitchen and living room has a welcoming atmosphere that braces for your relaxation.We developed the space for both guests and ourselves to find solace in the city.Turn the light on the brick wall, sit, relax, watch Netflix, or have a glass of wine.Whether your stay is a result of business or pleasure,we welcome and look forward to your visit!
+*THE LISTING PRICE MAY OR MAY NOT BE THE ACTUAL PRICE*
+The space
+There are 2 bedrooms with windows. One has a Queen sized bed, the other bedroom is meant to be an office but we added a single bed.
+Guest access
+The property has space for street parking. Since it is a new neighbourhood, buses do not run yet. You will need to either walk or drive to get to places.
+Other things to note
+We have a door that connects main floor and the suite for the convenience when we clean the space or just to enjoy the suite ourselves. Yes we love our suite that's why we want to share! However, when the guest are around, we lock the door with big padlocks on both sides just to provide sense of privacy for our guests. Therefore, nobody will ever surprise you through the door!", "image": "3.jpg", "amenities":"Bathtub,Hair dryer,Shampoo,Hot water,Washer,Dryer,Bed linens,Iron,Air conditioning,Smoke alarm,Wifi,Kitchen,Refrigerator,Cooking basics,Freezer,Coffee maker,Dining table" }
+]);
+
+
+db.users.insertMany([{ "first_name": "Mitul","last_name":"Patel","email":"patel.mitul.m@gmail.com","phone":"306-713-4410","password":"WhoCaresForYou","gender": "Male", "state":"SK", "photo": "1.jpg", "dob":"1982-11-09",mybookmarkcount:"0" }]);
+
+db.properties.updateMany([
+{{"_id": ObjectId("6226b595c43e04c89cd5ce1b")}, { $set: { "featured": true}}}
+{{"_id": ObjectId("6226b595c43e04c89cd5ce1c")}, { $set: { "featured": false}}}
+{{"_id": ObjectId("6226b595c43e04c89cd5ce1d")}, { $set: { "featured": true}}}
+]);
+
+
+db.properties.updateOne({"_id": ObjectId("6226b595c43e04c89cd5ce1b")}, { $set: { "featured": true}});
+db.properties.updateOne({"_id": ObjectId("6226b595c43e04c89cd5ce1c")}, { $set: { "featured": false}});
+db.properties.updateOne({"_id": ObjectId("6226b595c43e04c89cd5ce1d")}, { $set: { "featured": true}});
+
+{ "first_name": "","last_name":"","email":"","phone":"","password":"","gender": "", "state":"", "photo": "1.jpg", "dob":"1982-11-09",mybookmarkcount:"0" },
+{ "name": "","brief": "", "description":"", "image": "1.jpg", "amenities":"" },
+{ "name": "","brief": "", "description":"", "image": "1.jpg", "amenities":"" },
+{ "name": "","brief": "", "description":"", "image": "1.jpg", "amenities":"" },
+{ "name": "","brief": "", "description":"", "image": "1.jpg", "amenities":"" },
+{ "name": "","brief": "", "description":"", "image": "1.jpg", "amenities":"" },
+{ "name": "","brief": "", "description":"", "image": "1.jpg", "amenities":"" },
+{ "name": "","brief": "", "description":"", "image": "1.jpg", "amenities":"" },
+{ "name": "","brief": "", "description":"", "image": "1.jpg", "amenities":"" },
+{ "name": "","brief": "", "description":"", "image": "1.jpg", "amenities":"" },
+{ "name": "","brief": "", "description":"", "image": "1.jpg", "amenities":"" },
+{ "name": "","brief": "", "description":"", "image": "1.jpg", "amenities":"" },
+{ "name": "","brief": "", "description":"", "image": "1.jpg", "amenities":"" },

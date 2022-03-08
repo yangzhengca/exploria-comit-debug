@@ -1,0 +1,56 @@
+const mongoose = require("mongoose");
+let usersSchema = new mongoose.Schema({
+    first_name: {
+        type: String,
+        required: true
+    },
+    last_name: {
+        type: String,
+        required: true
+    },    
+    email: {
+        type: String,
+        required: true
+    },
+    phone: {
+        type: String,
+        required: true
+    },
+    password: {
+        type: String,
+        required: true
+    },
+    gender: {
+        type: String,
+        required: true
+    },
+    state: {
+        type: String,
+        required: true
+    },
+    photo: {
+        type: String,
+        required: false        
+    },
+    dob: {
+        type: Date,
+        required: false        
+    },
+    mybookmarkcount: {
+        type: Number,
+        default: 0
+    },
+    bookmarkpropties: [
+        {
+            property: String
+        }
+    ]
+},
+    {
+        timestamps: {
+            createdAt: 'created_at',
+            updatedAt: 'updated_at'
+        }
+    }
+);
+module.exports = mongoose.model("UsersModel", usersSchema);
